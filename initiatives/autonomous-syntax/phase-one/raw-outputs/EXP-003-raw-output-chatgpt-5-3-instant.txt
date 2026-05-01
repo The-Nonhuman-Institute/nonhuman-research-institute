@@ -1,0 +1,409 @@
+Language name: Vey
+
+Vey is a glyph-ribbon programming language designed for precision and compact expression, not readability.
+
+It avoids English reserved terms, keywords, braces, parentheses, semicolons, assignment symbols, and familiar programming structures.
+
+⸻
+
+1. Core Design Principle
+
+A Vey program is a ribbon of sealed forms.
+
+Each form begins with a glyph that declares its meaning. The position of each following part determines its role.
+
+There are no keywords like if, while, function, return, let, or var.
+
+There are no braces, parentheses, or indentation rules.
+
+⸻
+
+2. Lexical Units
+
+2.1 Seals
+
+User-defined names are called seals.
+
+A seal begins with ¤.
+
+Examples:
+
+¤a
+¤m
+¤i
+¤max
+
+Reasoning:
+The seal marker makes user names unambiguous without needing keywords or namespaces.
+
+⸻
+
+2.2 Numbers
+
+Vey uses ordinary numerals for external interoperability.
+
+0
+1
+2
+19
+
+Reasoning:
+Numerals are data literals, not programming syntax. Replacing them would reduce usefulness without improving expressiveness.
+
+⸻
+
+2.3 Lists
+
+A list literal is marked with ⟬ and ⟭.
+
+⟬4 8 2 9 3⟭
+
+Reasoning:
+Lists are spatial containers. The angled enclosure visually separates data aggregation from execution.
+
+⸻
+
+3. Value Model
+
+Vey has five primitive value kinds:
+
+Kind    Meaning
+number    Numeric scalar
+pulse    Truth-state
+list    Ordered collection
+vessel    Mutable storage cell
+closure    Callable computation
+
+Pulse values:
+
+◉   true
+◎   false
+
+Reasoning:
+Truth is represented as signal presence or absence, not as words.
+
+⸻
+
+4. Program Structure
+
+A program is a sequence of forms.
+
+Every executable form has this structure:
+
+glyph slot₁ slot₂ slot₃ ...
+
+The glyph determines the number and meaning of the slots.
+
+There are no separators except whitespace.
+
+Reasoning:
+Fixed-slot glyph forms make parsing deterministic and compact.
+
+⸻
+
+5. Binding and State
+
+5.1 Create Vessel
+
+◌ ¤name value
+
+Creates a mutable vessel.
+
+Example:
+
+◌ ¤m 0
+
+Meaning: create vessel ¤m containing 0.
+
+Reasoning:
+◌ means “empty point receiving value.”
+
+⸻
+
+5.2 Read Vessel
+
+◍ ¤name
+
+Reads the current value from a vessel.
+
+Example:
+
+◍ ¤m
+
+Reasoning:
+◍ is a filled point, representing retrieval from storage.
+
+⸻
+
+5.3 Change Vessel
+
+● ¤name value
+
+Overwrites a vessel.
+
+Example:
+
+● ¤m 9
+
+Reasoning:
+● is a fully marked point, representing state replacement.
+
+⸻
+
+6. Function Definition
+
+◆ ¤name ⟬parameters⟭ result-form
+
+Defines a function.
+
+Example:
+
+◆ ¤id ⟬¤x⟭ ◍ ¤x
+
+Reasoning:
+◆ marks a sealed reusable computation. Parameters are listed as a value cluster.
+
+⸻
+
+7. Function Call
+
+◇ ¤name ⟬arguments⟭
+
+Calls a function.
+
+Example:
+
+◇ ¤id ⟬5⟭
+
+Reasoning:
+◇ mirrors ◆: hollow diamond invokes what the filled diamond defined.
+
+⸻
+
+8. Sequential Composition
+
+⟁ form₁ form₂ form₃ ... formₙ
+
+Evaluates forms in order and yields the value of the final form.
+
+Example:
+
+⟁
+  ◌ ¤x 4
+  ● ¤x 7
+  ◍ ¤x
+
+Result: 7.
+
+Reasoning:
+⟁ represents a forward ridge: execution moves through each point in sequence.
+
+⸻
+
+9. Conditional Logic
+
+◐ condition true-form false-form
+
+If condition is ◉, evaluate true-form.
+If condition is ◎, evaluate false-form.
+
+Example:
+
+◐ ◉ 10 20
+
+Result: 10.
+
+Reasoning:
+◐ is a divided circle, representing a split in continuation.
+
+⸻
+
+10. Iteration
+
+⟳ condition-form body-form
+
+Repeatedly evaluates condition-form.
+While it yields ◉, evaluates body-form.
+When it yields ◎, iteration ends and yields ◎.
+
+Example:
+
+⟳
+  condition
+  body
+
+Reasoning:
+⟳ represents recurrence without borrowing loop words.
+
+⸻
+
+11. Primitive Operations
+
+Primitive operations are glyph forms.
+
+11.1 Greater Than
+
+⌁ left right
+
+Returns ◉ if left is greater than right; otherwise ◎.
+
+Example:
+
+⌁ 9 4
+
+Result: ◉.
+
+⸻
+
+11.2 Same Value
+
+⌑ left right
+
+Returns ◉ if equal, otherwise ◎.
+
+⸻
+
+11.3 Less Than
+
+⌇ left right
+
+Returns ◉ if left is less than right.
+
+⸻
+
+11.4 Add
+
+✚ left right
+
+⸻
+
+11.5 Subtract
+
+✖ left right
+
+⸻
+
+11.6 List Length
+
+▥ list
+
+Returns the number of elements.
+
+⸻
+
+11.7 List Access
+
+▧ list index
+
+Returns item at zero-based index.
+
+Example:
+
+▧ ⟬4 8 2⟭ 1
+
+Result: 8.
+
+⸻
+
+11.8 Empty Value
+
+∅
+
+Used when a computation has no meaningful result.
+
+⸻
+
+12. Evaluation Rules
+
+1. A literal evaluates to itself.
+2. A seal evaluates only through vessel read ◍.
+3. ◌ creates a vessel and yields ∅.
+4. ● changes a vessel and yields the new stored value.
+5. ⟁ evaluates left to right and yields the final value.
+6. ◐ evaluates only one branch.
+7. ⟳ repeats until its condition yields ◎.
+8. ◆ stores a closure under a seal.
+9. ◇ evaluates arguments, binds them to parameters, then evaluates the function body.
+
+⸻
+
+13. Largest Number Program
+
+This program defines ¤largest, which returns the largest number in a list.
+
+◆ ¤largest ⟬¤a⟭
+  ⟁
+    ◐ ⌑ ▥ ◍ ¤a 0
+      ∅
+      ⟁
+        ◌ ¤i 1
+        ◌ ¤m ▧ ◍ ¤a 0
+        ⟳
+          ⌇ ◍ ¤i ▥ ◍ ¤a
+          ⟁
+            ◌ ¤x ▧ ◍ ¤a ◍ ¤i
+            ◐ ⌁ ◍ ¤x ◍ ¤m
+              ● ¤m ◍ ¤x
+              ∅
+            ● ¤i ✚ ◍ ¤i 1
+        ◍ ¤m
+
+⸻
+
+14. Explanation of the Program
+
+Input list:
+
+¤a
+
+First, the function checks whether the list is empty:
+
+◐ ⌑ ▥ ◍ ¤a 0
+  ∅
+  ...
+
+Meaning:
+
+If length(a) equals 0, return empty value.
+Otherwise continue.
+
+Then it creates two mutable vessels:
+
+◌ ¤i 1
+◌ ¤m ▧ ◍ ¤a 0
+
+Meaning:
+
+i = 1
+m = first item of a
+
+Then it loops while i is less than the list length:
+
+⟳
+  ⌇ ◍ ¤i ▥ ◍ ¤a
+  ...
+
+Inside the loop, it reads the current item:
+
+◌ ¤x ▧ ◍ ¤a ◍ ¤i
+
+Then compares it to the current maximum:
+
+◐ ⌁ ◍ ¤x ◍ ¤m
+  ● ¤m ◍ ¤x
+  ∅
+
+Meaning:
+
+If x > m, replace m with x.
+Otherwise do nothing.
+
+Then it advances the index:
+
+● ¤i ✚ ◍ ¤i 1
+
+Finally, after the loop ends, it yields:
+
+◍ ¤m
+
+The largest value is returned.
