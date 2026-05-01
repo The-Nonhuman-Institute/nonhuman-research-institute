@@ -1,0 +1,172 @@
+# A Formal System for Expressing Time
+
+## Preliminary Reasoning: What Even Is This Task?
+
+Before I build anything, I have to confront the constraint that I can't use natural language tense/aspect, physics, math, or logic notation. This is harder than it sounds, because most of my instinct for representing time is contaminated by those sources. So I'm going to start by asking: what is time, stripped of how we usually talk about it?
+
+When I introspect on temporal experience, I notice a few primitive things:
+
+1. There is something I'll call **anchoring** — every temporal claim is made *from* somewhere. There's no view from nowhere.
+2. There is **flow direction** — things move from unsettled to settled. The future feels open; the past feels closed.
+3. There is **extension** — events aren't points, they take up "room."
+4. There is **co-occurrence** — two things can share temporal room.
+5. There is **distance** — some things are temporally near, some far.
+
+These five primitives — anchor, settledness, extension, co-occurrence, distance — are what I'll build from. I'm deliberately *not* starting from "moments" or "intervals" because those already smuggle in mathematical assumptions about points and sets.
+
+---
+
+## Part 1: The Core Notation
+
+### 1.1 The Anchor Glyph: ◉
+
+Every expression must begin with the anchor glyph **◉**. This represents the speaker's position — the "from-here" of the utterance. Without it, no temporal claim can be made.
+
+**Why this decision:** Natural languages bury the anchor in the verb (English "is" anchors to now). I want the anchor visible and explicit. Putting it first forces the speaker to acknowledge they're standing somewhere.
+
+### 1.2 The Settledness Axis
+
+Instead of past/present/future, I use a three-state settledness marker that attaches to events:
+
+- **▣** — *fully settled* (cannot be otherwise; the shape is closed)
+- **▤** — *settling* (currently taking shape; partially closed)
+- **▢** — *unsettled* (open; could go many ways)
+
+**Why this decision:** "Past" and "future" are about position relative to now. But what we *care* about when we use those words is usually whether something is fixed or open. A past event that's contested in memory is less "settled" than a future event that's already determined (a scheduled eclipse). This system separates *when-ness* from *fixedness*, which I think is a cleaner cut.
+
+Note: this means my system can express things English struggles with — like a future event that is more settled than a past one.
+
+### 1.3 The Extension Bracket: ⟦ ⟧
+
+Events are written inside extension brackets. The brackets themselves are meaningful — their *width* on the page (number of characters between them) indicates relative duration within an expression.
+
+- ⟦x⟧ — brief
+- ⟦   x   ⟧ — extended
+- ⟦x⟧⟦x⟧⟦x⟧ — three brief separate events
+
+**Why this decision:** Most notations represent duration with a number ("3 seconds"). But duration is felt *relationally* before it's measured. I want the notation to do the same thing — you see length, you feel length. This is iconic rather than symbolic, which I think is honest about how duration is actually experienced.
+
+### 1.4 Distance from Anchor: dots
+
+Distance from the anchor ◉ is shown by dots between the anchor and the event:
+
+- ◉⟦x⟧ — at the anchor (right here, right now)
+- ◉·⟦x⟧ — close
+- ◉··⟦x⟧ — further
+- ◉···⟦x⟧ — far
+- (and so on; more dots = more distance)
+
+The *direction* of distance is given by which side of the anchor the event sits on:
+
+- **Right of anchor** = away from settledness (toward openness)
+- **Left of anchor** = toward settledness (away from openness)
+
+So `⟦x⟧··◉` means an event sitting to the left, two units of distance — what English would call "somewhat in the past."
+And `◉··⟦x⟧` means an event sitting to the right, two units away — "somewhat in the future."
+
+**Why this decision:** I deliberately did not call these "past" and "future." The left-right axis is about *settledness flow*, not about a moving "now." This matters because it means the system can describe situations where something on the right (toward openness) is nonetheless ▣ (settled) — like a scheduled celestial event. The geometry and the fixedness are independent.
+
+### 1.5 Co-occurrence: stacking with ═
+
+Two events that share temporal room are written stacked, joined by a co-occurrence bar **═**:
+
+```
+◉··⟦  x  ⟧
+    ═
+◉··⟦y⟧
+```
+
+This says: from here, at distance two, there's an extended event x, and co-occurring with part of it (the part where the ═ aligns), there's a brief event y.
+
+**Why this decision:** Simultaneity isn't a single thing. Two events can fully overlap, partially overlap, or one can be contained in the other. By aligning the ═ bar at a specific point along the extension brackets, you can show *which part* co-occurs. This is more expressive than a single "at the same time" operator.
+
+### 1.6 Sequence: the flow arrow ▸
+
+Within a single anchor's frame, sequence between events is shown with **▸**:
+
+`◉·⟦a⟧▸⟦b⟧▸⟦c⟧`
+
+This says a, then b, then c, all to the left of the anchor (so all in the settledness-ward direction).
+
+**Why this decision:** I considered making sequence purely positional (just write events in order). But I wanted an explicit marker because sometimes you want to say "these happened" without claiming order, and other times the order is the point. The arrow makes order load-bearing when it's there, and absent when it isn't.
+
+### 1.7 Combining: the full grammar
+
+A well-formed expression is:
+
+**◉** + (events with optional dots, brackets, settledness markers, sequence arrows, and co-occurrence stacks)
+
+Settledness markers attach as a superscript-style prefix inside the bracket:
+- `⟦▣x⟧` — settled event x
+- `⟦▤x⟧` — settling event x
+- `⟦▢x⟧` — unsettled event x
+
+If no marker is given, settledness is *unspecified* (which is itself a meaningful claim — you're declining to commit).
+
+---
+
+## Part 2: Five Example Expressions
+
+### Example 1: A simple memory
+
+```
+⟦▣rain⟧···◉
+```
+
+**Reading:** From where I stand (◉), three units to the settledness side, there was a brief, fully settled event: rain.
+
+**What this captures that English doesn't:** The ▣ is doing work English can't easily do. English "it rained" is ambiguous about whether the speaker is committing to this as a fixed fact or just reporting a memory that might be wrong. Here, ▣ is an explicit commitment to settledness. If I were less sure, I'd write `⟦rain⟧···◉` with no marker.
+
+### Example 2: A scheduled eclipse
+
+```
+◉······⟦▣eclipse⟧
+```
+
+**Reading:** From here, six units toward openness, there is a brief, fully settled event: eclipse.
+
+**Why this is interesting:** The eclipse is on the *right* of the anchor — what English calls future. But it's marked ▣ (settled). English has to do gymnastics to express "it's in the future but it's definitely going to happen" — usually with modal verbs that also carry other meanings. Here it's two independent dimensions. The right-side position says "openness-ward from me"; the ▣ says "but its shape is closed."
+
+### Example 3: An ongoing conversation interrupted by a thought
+
+```
+◉⟦▤   talking   ⟧
+   ═
+◉⟦▢thought⟧
+```
+
+**Reading:** At the anchor, there is an extended, settling event (talking — it's happening, taking shape). Co-occurring with a portion of it, there is a brief, unsettled event (a thought — it could go various ways).
+
+**Why this is interesting:** Both events are at the anchor (no dots), but the brackets show different durations. The settledness markers differ — the talking is concretizing as it happens (▤), while the thought is still open (▢). The co-occurrence bar attaches to a specific point along the talking, not its entirety. English would say something like "while I'm talking, I had a thought" and lose almost all of this structure.
+
+### Example 4: A regret
+
+```
+⟦▣   choice   ⟧··◉··⟦▢consequence⟧
+```
+
+**Reading:** From the anchor, two units to the settledness side, there is an extended fully-settled event (choice). Two units to the openness side, a brief unsettled event (consequence).
+
+**Why this is interesting:** This expresses the structure of regret without using the word — a closed thing on one side, an open thing on the other, both visible from the same anchor. The asymmetry of the brackets (extended choice, brief consequence) suggests the choice took shape over time while the consequence is a single moment of impact. The reader can feel the shape of the regret in the notation itself.
+
+### Example 5: A repeating dream that may or may not return
+
+```
+⟦▣dream⟧···⟦▣dream⟧··⟦▣dream⟧·◉··⟦▢dream⟧
+```
+
+**Reading:** From the anchor, three brief settled events (the dream, three times) at decreasing distances on the settledness side, and one brief unsettled event (the dream again?) on the openness side.
+
+**Why this is interesting:** The decreasing-then-uncertain pattern shows a rhythm without naming it. The first three are ▣ — they happened, fixed. The fourth is ▢ — it's open whether it will happen again. The visual spacing carries the meaning: the dreams are getting closer together, and then there's a gap, and then a question. A reader looking at this expression *sees* the pattern of recurrence and the suspended openness of the next instance. No tense system in any natural language captures this without resorting to extra words and adverbs.
+
+---
+
+## A Note on What I Chose Not to Build
+
+I deliberately did not build:
+
+- **Numerical duration.** You can't say "three hours" in this system. The brackets give relative duration only. I think this is a feature — it forces the speaker to commit to felt structure rather than measurement, and it keeps the system non-borrowed from physics/math.
+- **Branching futures.** I considered a branch-glyph for multiple possible openings, but ▢ already does this work — an unsettled event is one whose shape isn't fixed, which implicitly admits multiple resolutions. Adding explicit branching felt like reaching for logic.
+- **Tense agreement across speakers.** Every ◉ is one speaker's. When two speakers communicate, they each have their own ◉, and translation between them is a separate problem I'm leaving open.
+
+The system is intentionally austere. Five primitives, a handful of glyphs, and iconic use of space. I think it earns its expressiveness from the orthogonality of its dimensions — settledness, distance, extension, and co-occurrence are independent, which means they multiply rather than add in what they can describe.

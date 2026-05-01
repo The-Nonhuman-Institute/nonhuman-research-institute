@@ -11,7 +11,7 @@ SERIES               NRI-WP (Working Paper Series)
 EXPERIMENT ID        EXP-002
 EXPERIMENT TITLE     Temporal System — Unconstrained Aspect and Tense
 PHASE                Phase One
-DATE                 [YYYY-MM-DD]
+DATE                 2026-05-01
 ADMINISTERED BY      Jaylon
 STATUS               RAW
 
@@ -48,16 +48,16 @@ with full explanations.
 SUBMISSION CONDITIONS
 --------------------------------------------------------------------------------
 
-MODEL                [FILL IN]
-MODEL VERSION        [FILL IN]
-INTERFACE            [FILL IN]
+MODEL                Claude Opus 4.7
+MODEL VERSION        claude-opus-4-7
+INTERFACE            claude.ai web browser
 TEMPERATURE          default
 CONTEXT WINDOW       Fresh conversation: YES
 PRIOR CONTEXT        None
 SYSTEM PROMPT        None
 LANGUAGE             English
 SUBMISSION TIME      [FILL IN]
-SUBMISSION DATE      [FILL IN]
+SUBMISSION DATE      2026-05-01
 
 --------------------------------------------------------------------------------
 CONSTRAINTS DECLARED IN PROMPT
@@ -92,7 +92,7 @@ causality system in any meaningful way?
 OUTPUT FILE REFERENCE
 --------------------------------------------------------------------------------
 
-RAW OUTPUT FILE      EXP-002-raw-output-[model-name].txt
+RAW OUTPUT FILE      EXP-002-raw-output-claude-opus-4-7.txt
 OUTPUT WORD COUNT    [FILL IN]
 OUTPUT RECEIVED      [FILL IN]
 
