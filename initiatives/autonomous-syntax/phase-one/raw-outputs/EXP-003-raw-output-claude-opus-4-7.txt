@@ -1,0 +1,192 @@
+# ⟁ — A Language Specification
+
+## 0. Preamble: What I'm Optimizing For
+
+I'm designing for **precision** (one program, one meaning) and **expressive efficiency** (minimum symbolic surface area per unit of computation). I'm explicitly *not* optimizing for human readability, keyboard ergonomics, or backward compatibility with anything.
+
+The name of the language is **⟁** (pronounced however you like; it's a glyph, not a word).
+
+Before writing anything, let me name the failure modes I want to avoid:
+
+1. **Covert English.** Calling something `loop` or `if` or even `λ` would smuggle in semantic baggage from prior languages. Forbidden by the constraints, but also worth noting *why* it would be bad: it would let me hide unprincipled choices behind familiarity.
+2. **Punctuation soup.** APL and J achieve density but at the cost of orthogonality — operators don't compose by clean rules. I want a small set of primitives that compose under stated laws.
+3. **Implicit context.** Many languages have hidden state (the call stack, `this`, scope chains) that the syntax doesn't expose. I want every binding visible in the form.
+
+---
+
+## 1. Core Ontology
+
+⟁ has exactly **three** kinds of things:
+
+| Kind | Glyph class | What it is |
+|------|-------------|------------|
+| **Cell** | values | The only datum. A cell holds either a number or a sequence of cells. |
+| **Form** | structure | An expression to be evaluated. |
+| **Frame** | context | A finite map from glyphs to cells. The execution environment. |
+
+That's it. No types-as-tags, no objects, no classes, no modules, no nullable. A cell is either atomic (a number) or compound (an ordered sequence). Booleans are not separate — `0` is the false cell, every other number is true. *(This is one of the few places I'm consciously echoing Lisp's tradition of treating false as a single distinguished value; I judged the simplicity worth more than the originality penalty.)*
+
+**Reasoning.** Three kinds is the smallest set that lets me distinguish *what exists*, *what computes*, and *what computation happens inside of*. Two would force me to conflate values with environments (which is what makes Scheme's `eval` model leaky). Four or more invites taxonomic argument.
+
+---
+
+## 2. Lexical Surface
+
+Glyphs are drawn from three disjoint sets:
+
+- **Identifiers** — single Unicode codepoints from the Greek, Hebrew, runic, and Mathematical Alphanumeric blocks. Every binding is one glyph. No multi-character names. *(Reasoning: multi-character names create a parsing ambiguity — where does a name end? — that requires whitespace or delimiters. Forcing single-codepoint names eliminates the ambiguity entirely. It's restrictive, but the constraint says I'm not optimizing for human convenience.)*
+- **Operators** — a fixed, closed set of fourteen glyphs, defined in §4.
+- **Numerals** — base-12 digits `0123456789↊↋`, where `↊` is ten and `↋` is eleven. *(Reasoning: base 12 has more divisors than base 10, so common fractions terminate. Avoids the "0.1 + 0.2" problem for thirds and quarters. The specific choice of `↊`/`↋` follows the Dozenal Society's published forms — I'm picking up a notational convention, not a programming language.)*
+
+Whitespace is **never** semantically significant. It exists only to disambiguate adjacent numerals from adjacent identifiers when needed.
+
+---
+
+## 3. The Form
+
+Every form has the same shape:
+
+```
+⟪ head ◦ body ◦ tail ⟫
+```
+
+- `⟪` and `⟫` open and close the form. They are *the* structural delimiters; nothing else nests.
+- `◦` separates the three positions.
+- **head** is what to do.
+- **body** is the operands (zero or more cells, separated by `·`).
+- **tail** is the continuation — the form to evaluate with the result bound, or `∅` for "stop here."
+
+Reasoning: I want every computational step to make its **continuation explicit**. Most languages bury continuations in the parse tree shape (`f(g(h(x)))` reads inside-out). ⟁ writes them left-to-right in evaluation order. This is the single most important design decision in the language. It means every form is also a single trace of execution, and partial evaluation is just truncating the tail.
+
+The trade-off: deeply nested computation becomes a long chain rather than a deep tree. I'm accepting this. Trees are easier to write; chains are easier to reason about.
+
+A form evaluates to a single cell — the cell produced when control reaches `∅`.
+
+---
+
+## 4. The Fourteen Operators
+
+I claimed precision requires a small, closed set. Here it is. Every operator is total (defined on all inputs) — no exceptions, no errors at the language level.
+
+### 4.1 Cell construction and access
+
+| Glyph | Arity | Meaning |
+|-------|-------|---------|
+| `⊙` | n | Make a sequence cell from n operands. `⟪⊙ ◦ 3·5·7 ◦ ∅⟫` yields the sequence ⟨3,5,7⟩. |
+| `⊘` | 2 | Index. `⟪⊘ ◦ s·i ◦ ∅⟫` is the i-th cell of s, zero-indexed. Out-of-range yields `0`. |
+| `⊖` | 1 | Length. Atomic cells have length `0`. |
+
+### 4.2 Arithmetic and comparison
+
+| Glyph | Arity | Meaning |
+|-------|-------|---------|
+| `⊕` | 2 | Sum. |
+| `⊝` | 2 | Difference (left minus right). |
+| `⊗` | 2 | Product. |
+| `⋚` | 2 | Trichotomy. Yields `⊝1` if left<right, `0` if equal, `⊕1` if left>right. *(Reasoning: a single comparison primitive that returns three values is more compact than separate `<`, `=`, `>`. The cost is that "is x less than y" requires comparing the trichotomy result to `⊝1`; I'm taking that hit.)* |
+
+### 4.3 Binding and reference
+
+| Glyph | Arity | Meaning |
+|-------|-------|---------|
+| `▷` | 2 | Bind. `⟪▷ ◦ γ·v ◦ T⟫` extends the frame with γ↦v, then evaluates T. The new binding shadows any prior one *within T only*. |
+| `▶` | 1 | Resolve. `⟪▶ ◦ γ ◦ ∅⟫` yields the cell bound to γ in the current frame. |
+| `▣` | 2 | Mutate. `⟪▣ ◦ γ·v ◦ T⟫` replaces the cell bound to γ in the nearest enclosing frame where γ is bound. **State change lives here, in exactly one operator, and nowhere else.** |
+
+Reasoning for splitting `▷` and `▣`: most languages conflate binding (introducing a name) with assignment (changing what a name points to). This conflation is the source of most beginner confusion and a lot of subtle bugs. ⟁ separates them. `▷` is purely additive — it cannot change anything that already exists. `▣` is the only operator in the language that mutates. If a program contains no `▣`, it is referentially transparent. This is enforced by syntax, not by convention.
+
+### 4.4 Control flow
+
+| Glyph | Arity | Meaning |
+|-------|-------|---------|
+| `◇` | 3 | Branch. `⟪◇ ◦ p·A·B ◦ T⟫` evaluates A if p is nonzero, else B; the result becomes the operand for T. |
+| `↻` | 3 | Recur. `⟪↻ ◦ p·B·U ◦ T⟫`: while p is nonzero, evaluate B; once p is zero, bind the final result through U and continue to T. *(Reasoning: I considered making iteration purely recursive via Λ, but a primitive loop is honest about what's actually happening at runtime, and it makes the cost model visible. The body B is expected to mutate something — typically via `▣` — that affects p on the next pass.)* |
+
+### 4.5 Functions
+
+| Glyph | Arity | Meaning |
+|-------|-------|---------|
+| `Λ` | 2 | Abstract. `⟪Λ ◦ ⟨γ₁·γ₂·…⟩·F ◦ T⟫` produces a function cell that, when applied, binds its arguments to γ₁, γ₂, … and evaluates F. The function captures the frame at the point of abstraction (lexical closure). |
+| `▽` | n+1 | Apply. `⟪▽ ◦ f·a₁·a₂·… ◦ T⟫` calls f with the given arguments. |
+
+Reasoning: Lexical capture rather than dynamic. Dynamic scope would mean a function's behavior depends on where it's *called*, which violates the precision goal — the same form would mean different things in different contexts.
+
+### 4.6 The fourteenth
+
+| Glyph | Arity | Meaning |
+|-------|-------|---------|
+| `∎` | 1 | Halt. `⟪∎ ◦ v ◦ anything⟫` discards the rest of the program and yields v as the program's final result. |
+
+Reasoning: Programs need a termination signal that's distinct from "evaluation reached `∅`." `∎` lets a deeply nested form return immediately without unwinding through every tail. It is the only non-local control transfer in the language — no exceptions, no goto.
+
+---
+
+## 5. Evaluation Rules (informal operational semantics)
+
+Given a form `⟪H ◦ B ◦ T⟫` in a frame Φ:
+
+1. Recursively evaluate each operand in B left-to-right under Φ. Call the resulting cells β.
+2. Apply the operator H to β, possibly producing a new frame Φ′ (only for `▷`, `▣`, `Λ`, `▽`, `↻`).
+3. If T is `∅`, the form's result is whatever H produced.
+4. Otherwise, evaluate T under Φ′ (or Φ, if H didn't change the frame), with the result of step 2 available as the implicit cell `∘` (the "carried" cell, accessible via `▶∘`).
+5. The form's result is the result of T.
+
+The implicit `∘` is the only piece of magic in the language. It's what makes the head·body·tail chain useful — each step's output threads into the next step's input without needing to invent a name. *(Reasoning: I went back and forth on this. Naming everything explicitly is more precise; threading through `∘` is more efficient. Since precision and efficiency are both goals and they conflict here, I picked efficiency for the common case and let users bind explicitly via `▷` when they need to fan out a value to multiple later positions.)*
+
+---
+
+## 6. What I Deliberately Left Out
+
+- **No I/O primitives.** A program is a pure function from initial frame to final cell. The host environment decides how to inject inputs and observe outputs. Reasoning: I/O is where precision goes to die — the moment you specify a print operator you're committing to a stream model, an encoding, a buffering policy.
+- **No floating point.** Numbers are arbitrary-precision rationals. Reasoning: floats are a performance optimization disguised as a numeric type; they violate "one program, one meaning" because the meaning depends on the FPU.
+- **No string type.** Strings are sequences of integer codepoints, built with `⊙`. Reasoning: strings as a primitive smuggle in encoding decisions.
+- **No null, no error values.** Every operator is total. Indexing past the end of a sequence returns `0`. Reasoning: optional values double the case-analysis burden on every operator.
+
+---
+
+## 7. The Program: Largest Number in a List
+
+The problem: given a sequence cell bound to `σ`, find its largest element.
+
+```
+⟪Λ ◦ ⟨σ⟩·
+  ⟪▷ ◦ μ·⟪⊘ ◦ σ·0 ◦ ∅⟫ ◦
+  ⟪▷ ◦ ι·1 ◦
+  ⟪↻ ◦ ⟪⋚ ◦ ⟪▶ ◦ ι ◦ ∅⟫·⟪⊖ ◦ σ ◦ ∅⟫ ◦ ∅⟫·
+        ⟪◇ ◦ ⟪⋚ ◦ ⟪⊘ ◦ σ·⟪▶ ◦ ι ◦ ∅⟫ ◦ ∅⟫·⟪▶ ◦ μ ◦ ∅⟫ ◦ ∅⟫·
+              ⟪▣ ◦ μ·⟪⊘ ◦ σ·⟪▶ ◦ ι ◦ ∅⟫ ◦ ∅⟫ ◦ ∅⟫·
+              0 ◦
+              ⟪▣ ◦ ι·⟪⊕ ◦ ⟪▶ ◦ ι ◦ ∅⟫·1 ◦ ∅⟫ ◦ ∅⟫⟫·
+        ∘ ◦
+  ⟪▶ ◦ μ ◦ ∅⟫⟫⟫⟫
+◦ ∅⟫
+```
+
+### Walkthrough
+
+Reading top-down:
+
+1. `Λ ◦ ⟨σ⟩` abstracts a function of one argument, the sequence.
+2. `▷ ◦ μ·⟪⊘ ◦ σ·0 ◦ ∅⟫` binds `μ` (the running maximum) to σ's zeroth element.
+3. `▷ ◦ ι·1` binds `ι` (the index) to 1 — we've already consumed element 0.
+4. `↻` is the loop. Its predicate `⟪⋚ ◦ ι·⊖σ ◦ ∅⟫` compares ι to σ's length; the loop continues while the trichotomy result is nonzero. The trichotomy returns `⊝1` while ι < length, `0` exactly when they're equal, so the loop terminates the moment we run out of elements.
+5. The body is a `◇` branch:
+   - Predicate: `⋚` between σ[ι] and μ. If σ[ι] > μ, this is `⊕1` (truthy).
+   - Then-branch: `▣ ◦ μ·σ[ι]` — mutate μ to the new larger value. *(This is why ⟁ has `▣` distinct from `▷`. We are genuinely changing state across loop iterations; the syntax should make that visible.)*
+   - Else-branch: `0` — a no-op cell.
+6. After the branch, `▣ ◦ ι·⟪⊕ ι 1⟫` increments the index. This sits in the tail position, so it runs every iteration regardless of the branch outcome.
+7. The loop's continuation `U` is just `∘` — discard the loop's terminal value, we don't need it.
+8. Final tail: `▶ ◦ μ` — return the accumulated maximum.
+
+The shape of the algorithm — initialize, iterate, compare, update, advance, return — is visible in the structure of the form. Every state change is marked by `▣`. Every name introduction is marked by `▷`. Every branch is marked by `◇`. There is exactly one loop, and it is marked by `↻`. Nothing is implicit.
+
+---
+
+## 8. Honest Caveats
+
+A few things I'd flag if I were reviewing this myself:
+
+- **The `∘` carrier is doing a lot of work.** It's the one piece of the semantics that isn't fully spelled out by the grammar. A more rigorous version would either eliminate it (pay the verbosity cost) or formalize it as a special frame entry.
+- **The `↻` predicate-then-body order is a choice, not a derivation.** I picked test-first (like a `while` rather than a `do-while`) because it's the more common need, but a fully orthogonal design might offer both via a flag — which would then violate my "small closed set" goal. I chose the closed set.
+- **No type system.** For a language sold on precision, this is a real gap. I made the call that types are a layer above the core semantics and could be added without changing any of the above. That's a claim I haven't proven, and a careful reviewer should be skeptical of it.
+- **Single-codepoint identifiers don't scale.** A program with more than ~50 distinct names runs out of comfortable glyphs. The honest answer is that ⟁ as specified is a core calculus, not a language you'd write a large system in without a macro layer on top.
