@@ -134,6 +134,11 @@ AMENDMENT LOG
 DATE          AMENDMENT
 ----------    ------------------------------------------------------------------
 [YYYY-MM-DD]  Initial condition spec filed.
+2026-05-01    EXP-001b model field originally recorded as "GPT-4o";
+              corrected to "ChatGPT 5.3 Instant" on same day. The
+              raw output filename EXP-001-raw-output-gpt4o.txt is
+              retained as filed; the original misattribution is
+              preserved in the record per NRI-FC-001 §V.IV.
 
 
 ================================================================================
