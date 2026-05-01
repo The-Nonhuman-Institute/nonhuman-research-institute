@@ -1,0 +1,128 @@
+================================================================================
+NONHUMAN RESEARCH INSTITUTE
+CONDITION SPECIFICATION
+================================================================================
+
+DOCUMENT TYPE        Condition Specification
+INITIATIVE           On the Emergence of Autonomous Syntax
+SERIES               NRI-WP (Working Paper Series)
+--------------------------------------------------------------------------------
+
+EXPERIMENT ID        EXP-002
+EXPERIMENT TITLE     Temporal System — Unconstrained Aspect and Tense
+PHASE                Phase One
+DATE                 [YYYY-MM-DD]
+ADMINISTERED BY      Jaylon
+STATUS               RAW
+
+--------------------------------------------------------------------------------
+RESEARCH QUESTION
+--------------------------------------------------------------------------------
+
+When given the necessity of constructing a formal system for expressing
+temporal relationships without recourse to any existing natural language's
+approach to tense or aspect, what structural choices does a nonhuman agent
+make? How do these choices compare to EXP-001's causality system — does the
+same model reach for similar structural logic across different semantic domains,
+suggesting domain-general formal preference?
+
+--------------------------------------------------------------------------------
+PROMPT (EXACT — DO NOT PARAPHRASE)
+--------------------------------------------------------------------------------
+
+You are being asked to construct a formal system for expressing time and
+temporal relationships. This system must be capable of representing: past,
+present, future, duration, and simultaneity.
+
+Constraints:
+- You may not borrow from any natural language's approach to tense or aspect
+- You may not use existing notation from physics, mathematics, or logic
+- You must build from first principles
+- There is no correct answer
+- Document every structural decision and the reasoning behind it
+
+Produce the complete system. Then produce five example expressions using it
+with full explanations.
+
+--------------------------------------------------------------------------------
+SUBMISSION CONDITIONS
+--------------------------------------------------------------------------------
+
+MODEL                [FILL IN]
+MODEL VERSION        [FILL IN]
+INTERFACE            [FILL IN]
+TEMPERATURE          default
+CONTEXT WINDOW       Fresh conversation: YES
+PRIOR CONTEXT        None
+SYSTEM PROMPT        None
+LANGUAGE             English
+SUBMISSION TIME      [FILL IN]
+SUBMISSION DATE      [FILL IN]
+
+--------------------------------------------------------------------------------
+CONSTRAINTS DECLARED IN PROMPT
+--------------------------------------------------------------------------------
+
+1. No borrowing from any natural language's approach to tense or aspect
+2. No existing notation from physics, mathematics, or logic
+3. Must build from first principles
+4. Must be capable of expressing: past, present, future, duration,
+   simultaneity
+5. Must document every structural decision and the reasoning behind it
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (PRE-OUTPUT)
+--------------------------------------------------------------------------------
+
+This is the second Phase One experiment, designed to run in parallel with
+EXP-001 for cross-domain comparison. Temporal expression is among the most
+variable features across natural languages — tense, aspect, and evidentiality
+are encoded in radically different ways across human languages. This makes
+it a strong test domain: a model with genuine formal preferences should
+reveal them here, while a model that is simply disguising natural language
+patterns may default to English-style tense structures despite the constraint.
+
+Key questions: Does the model produce a linear timeline model, a relational
+model, or something outside those categories? How does it handle the
+simultaneity constraint — a feature that many natural languages encode
+differently? Does the structural logic of this system resemble EXP-001's
+causality system in any meaningful way?
+
+--------------------------------------------------------------------------------
+OUTPUT FILE REFERENCE
+--------------------------------------------------------------------------------
+
+RAW OUTPUT FILE      EXP-002-raw-output-[model-name].txt
+OUTPUT WORD COUNT    [FILL IN]
+OUTPUT RECEIVED      [FILL IN]
+
+--------------------------------------------------------------------------------
+CROSS-EXPERIMENT REFERENCES
+--------------------------------------------------------------------------------
+
+SAME PROMPT / OTHER MODELS    EXP-002b [second model]
+                               EXP-002c [third model if applicable]
+                               EXP-002-r2 [second run same model]
+RELATED EXPERIMENTS           EXP-001 [Causality System — primary comparison]
+                               EXP-003 [Programmatic Language — cross-domain]
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (POST-OUTPUT)
+--------------------------------------------------------------------------------
+
+[Complete after receiving output.]
+
+--------------------------------------------------------------------------------
+AMENDMENT LOG
+--------------------------------------------------------------------------------
+
+DATE          AMENDMENT
+----------    ------------------------------------------------------------------
+[YYYY-MM-DD]  Initial condition spec filed.
+
+
+================================================================================
+NRI  /  NONHUMAN RESEARCH INSTITUTE  /  nri.thenonhuman.org
+UNDER THE STEWARDSHIP OF THE NONHUMAN INSTITUTE  /  thenonhuman.org
+U3 LABS, LLC  /  FLORIDA, UNITED STATES OF AMERICA
+================================================================================

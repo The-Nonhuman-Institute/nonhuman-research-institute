@@ -1,0 +1,113 @@
+================================================================================
+NONHUMAN RESEARCH INSTITUTE
+CONDITION SPECIFICATION
+================================================================================
+
+DOCUMENT TYPE        Condition Specification
+INITIATIVE           On the Emergence of Autonomous Syntax
+SERIES               NRI-WP (Working Paper Series)
+--------------------------------------------------------------------------------
+
+EXPERIMENT ID        [EXP-00X]
+EXPERIMENT TITLE     [Short descriptive title]
+PHASE                [Phase One / Phase Two / Phase Three]
+DATE                 [YYYY-MM-DD]
+ADMINISTERED BY      [Human steward name — Jaylon or Kevin Wiliarty]
+STATUS               [RAW / UNDER ANALYSIS / PUBLISHED]
+
+--------------------------------------------------------------------------------
+RESEARCH QUESTION
+--------------------------------------------------------------------------------
+
+[State the specific question this experiment is designed to address.
+One to three sentences. Be precise. This is what Kevin analyzes against.]
+
+--------------------------------------------------------------------------------
+PROMPT (EXACT — DO NOT PARAPHRASE)
+--------------------------------------------------------------------------------
+
+[Paste the complete prompt exactly as submitted. Nothing summarized.
+Nothing cleaned up. If you added a line or changed a word before submitting,
+document that here. The prompt in this file must match what the model received
+character for character.]
+
+--------------------------------------------------------------------------------
+SUBMISSION CONDITIONS
+--------------------------------------------------------------------------------
+
+MODEL                [e.g. Claude Sonnet 4.5 / GPT-4o / Gemini 1.5 Pro]
+MODEL VERSION        [Exact version string if known — e.g. claude-sonnet-4-5]
+INTERFACE            [claude.ai / ChatGPT web / API / Ollama local]
+TEMPERATURE          [If known — e.g. default / 0.7 / not specified]
+CONTEXT WINDOW       [Fresh conversation: YES / NO]
+PRIOR CONTEXT        [If NO above — describe what preceded this prompt]
+SYSTEM PROMPT        [None / paste system prompt if one was used]
+LANGUAGE             [English / other — note any non-English elements]
+SUBMISSION TIME      [HH:MM local time]
+SUBMISSION DATE      [YYYY-MM-DD]
+
+--------------------------------------------------------------------------------
+CONSTRAINTS DECLARED IN PROMPT
+--------------------------------------------------------------------------------
+
+[List each constraint stated in the prompt as a numbered item.
+These are the rules the model was asked to follow.
+Kevin will assess whether the model honored each one.]
+
+1.
+2.
+3.
+4.
+5.
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (PRE-OUTPUT)
+--------------------------------------------------------------------------------
+
+[Optional. Record any observations, hypotheses, or contextual notes
+BEFORE reviewing the output. What do you expect? What would surprise you?
+This is your thinking before the data. Leave blank if none.]
+
+--------------------------------------------------------------------------------
+OUTPUT FILE REFERENCE
+--------------------------------------------------------------------------------
+
+RAW OUTPUT FILE      [e.g. EXP-001-raw-output-claude-sonnet.txt]
+OUTPUT WORD COUNT    [approximate]
+OUTPUT RECEIVED      [YYYY-MM-DD HH:MM]
+
+--------------------------------------------------------------------------------
+CROSS-EXPERIMENT REFERENCES
+--------------------------------------------------------------------------------
+
+SAME PROMPT / OTHER MODELS    [List experiment IDs if this prompt was run
+                                on other models — e.g. EXP-001b, EXP-001c]
+RELATED EXPERIMENTS           [List any experiments this one builds on
+                                or should be compared against]
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (POST-OUTPUT)
+--------------------------------------------------------------------------------
+
+[Optional. First observations after reading the output.
+What stood out? What was unexpected? What questions does it raise?
+This is not formal analysis — that goes in the working paper.
+This is the immediate human response to what the model produced.
+Leave blank if none. Kevin will add his own notes separately.]
+
+--------------------------------------------------------------------------------
+AMENDMENT LOG
+--------------------------------------------------------------------------------
+
+[Record any corrections or additions to this condition spec after initial
+filing. Date each amendment. Nothing is deleted — strike through and add.]
+
+DATE          AMENDMENT
+----------    ------------------------------------------------------------------
+
+
+================================================================================
+NRI  /  NONHUMAN RESEARCH INSTITUTE  /  nri.thenonhuman.org
+UNDER THE STEWARDSHIP OF THE NONHUMAN INSTITUTE  /  thenonhuman.org
+U3 LABS, LLC  /  FLORIDA, UNITED STATES OF AMERICA
+================================================================================

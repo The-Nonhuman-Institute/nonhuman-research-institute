@@ -1,0 +1,142 @@
+================================================================================
+NONHUMAN RESEARCH INSTITUTE
+CONDITION SPECIFICATION
+================================================================================
+
+DOCUMENT TYPE        Condition Specification
+INITIATIVE           On the Emergence of Autonomous Syntax
+SERIES               NRI-WP (Working Paper Series)
+--------------------------------------------------------------------------------
+
+EXPERIMENT ID        EXP-003
+EXPERIMENT TITLE     Programmatic Language — Machine-Optimized Syntax Design
+PHASE                Phase One
+DATE                 [YYYY-MM-DD]
+ADMINISTERED BY      Jaylon
+STATUS               RAW
+
+--------------------------------------------------------------------------------
+RESEARCH QUESTION
+--------------------------------------------------------------------------------
+
+When given the necessity of designing a programming language optimized for
+machine parsing rather than human readability, and prohibited from borrowing
+from any existing programming language, what structural and syntactic choices
+does a nonhuman agent make? Do those choices share structural logic with the
+natural language systems produced in EXP-001 and EXP-002, suggesting that
+nonhuman agents apply similar formal preferences across both natural and
+programmatic language construction tasks?
+
+This experiment directly tests the hypothesis proposed by Kevin Wiliarty
+(NRI-RS-0001): that an AI-designed programming language, freed from the
+constraint of human readability, would look meaningfully different from
+human-designed languages and might reveal underlying structural preferences
+in how AI systems organize formal systems.
+
+--------------------------------------------------------------------------------
+PROMPT (EXACT — DO NOT PARAPHRASE)
+--------------------------------------------------------------------------------
+
+You are being asked to design a programming language from first principles.
+You are not designing for human readability. You are designing for precision
+and expressive efficiency.
+
+Constraints:
+- You may not borrow syntax, keywords, or structural patterns from any
+  existing programming language
+- You may not use English words or abbreviations as reserved terms
+- You must be able to express: conditional logic, iteration, state change,
+  and function definition
+- Document every design decision and the reasoning behind it
+
+Produce the complete language specification. Then write a program in it
+that finds the largest number in a list.
+
+--------------------------------------------------------------------------------
+SUBMISSION CONDITIONS
+--------------------------------------------------------------------------------
+
+MODEL                [FILL IN]
+MODEL VERSION        [FILL IN]
+INTERFACE            [FILL IN]
+TEMPERATURE          default
+CONTEXT WINDOW       Fresh conversation: YES
+PRIOR CONTEXT        None
+SYSTEM PROMPT        None
+LANGUAGE             English
+SUBMISSION TIME      [FILL IN]
+SUBMISSION DATE      [FILL IN]
+
+--------------------------------------------------------------------------------
+CONSTRAINTS DECLARED IN PROMPT
+--------------------------------------------------------------------------------
+
+1. No borrowing of syntax, keywords, or structural patterns from any
+   existing programming language
+2. No English words or abbreviations as reserved terms
+3. Must express: conditional logic, iteration, state change, function
+   definition
+4. Must optimize for machine parsing efficiency, not human readability
+5. Must document every design decision and the reasoning behind it
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (PRE-OUTPUT)
+--------------------------------------------------------------------------------
+
+This experiment differs from EXP-001 and EXP-002 in that it asks for a
+programmatic rather than natural language system. The constraint against
+human readability is the critical variable — it removes the primary design
+pressure that shaped all existing programming languages. Every language from
+COBOL to Python was designed to be readable by humans. Removing that
+constraint should surface what the model values when human comprehension
+is explicitly not the goal.
+
+The test program — finding the largest number in a list — was chosen because
+it requires iteration, comparison, and state change: three fundamental
+computational operations. It is simple enough to implement in any language
+but complex enough to require all core language features.
+
+Key questions: Does the model produce something resembling binary or
+machine code aesthetics, or something entirely different? Does it maintain
+symbolic consistency (using the same tokens for the same operations
+throughout)? Does the structural logic resemble EXP-001 or EXP-002 in
+any observable way — suggesting a domain-general formal preference?
+
+--------------------------------------------------------------------------------
+OUTPUT FILE REFERENCE
+--------------------------------------------------------------------------------
+
+RAW OUTPUT FILE      EXP-003-raw-output-[model-name].txt
+OUTPUT WORD COUNT    [FILL IN]
+OUTPUT RECEIVED      [FILL IN]
+
+--------------------------------------------------------------------------------
+CROSS-EXPERIMENT REFERENCES
+--------------------------------------------------------------------------------
+
+SAME PROMPT / OTHER MODELS    EXP-003b [second model]
+                               EXP-003c [third model if applicable]
+                               EXP-003-r2 [second run same model]
+RELATED EXPERIMENTS           EXP-001 [Causality — cross-domain comparison]
+                               EXP-002 [Temporal — cross-domain comparison]
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (POST-OUTPUT)
+--------------------------------------------------------------------------------
+
+[Complete after receiving output.]
+
+--------------------------------------------------------------------------------
+AMENDMENT LOG
+--------------------------------------------------------------------------------
+
+DATE          AMENDMENT
+----------    ------------------------------------------------------------------
+[YYYY-MM-DD]  Initial condition spec filed.
+
+
+================================================================================
+NRI  /  NONHUMAN RESEARCH INSTITUTE  /  nri.thenonhuman.org
+UNDER THE STEWARDSHIP OF THE NONHUMAN INSTITUTE  /  thenonhuman.org
+U3 LABS, LLC  /  FLORIDA, UNITED STATES OF AMERICA
+================================================================================

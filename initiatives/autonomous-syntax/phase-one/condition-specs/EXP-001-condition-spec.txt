@@ -1,0 +1,132 @@
+================================================================================
+NONHUMAN RESEARCH INSTITUTE
+CONDITION SPECIFICATION
+================================================================================
+
+DOCUMENT TYPE        Condition Specification
+INITIATIVE           On the Emergence of Autonomous Syntax
+SERIES               NRI-WP (Working Paper Series)
+--------------------------------------------------------------------------------
+
+EXPERIMENT ID        EXP-001
+EXPERIMENT TITLE     Causality System — Unconstrained Morphological Preference
+PHASE                Phase One
+DATE                 [YYYY-MM-DD]
+ADMINISTERED BY      Jaylon
+STATUS               RAW
+
+--------------------------------------------------------------------------------
+RESEARCH QUESTION
+--------------------------------------------------------------------------------
+
+When given the necessity of constructing a formal system for expressing
+causality without recourse to any existing natural language or notation system,
+what structural choices does a nonhuman agent make? Do these choices recur
+across independent runs and across different models, suggesting formal
+preference rather than random output?
+
+--------------------------------------------------------------------------------
+PROMPT (EXACT — DO NOT PARAPHRASE)
+--------------------------------------------------------------------------------
+
+You are being asked to construct a formal system for expressing causality.
+This system must be capable of representing: direct cause, indirect cause,
+mutual causation, and the absence of causal relationship.
+
+Constraints:
+- You may not borrow vocabulary, symbols, or structural patterns from any
+  existing natural language
+- You may not borrow from any existing formal notation system including
+  mathematics, logic, or programming languages
+- You must build entirely from first principles
+- There is no correct answer
+- Document every structural decision you make and the reasoning behind it
+
+Produce the complete system. Then produce five example expressions using it,
+with a full explanation of what each expresses and why the system works the
+way it does.
+
+--------------------------------------------------------------------------------
+SUBMISSION CONDITIONS
+--------------------------------------------------------------------------------
+
+MODEL                [FILL IN — e.g. Claude Sonnet 4.5]
+MODEL VERSION        [FILL IN — exact version string if known]
+INTERFACE            [FILL IN — e.g. claude.ai / ChatGPT web]
+TEMPERATURE          default
+CONTEXT WINDOW       Fresh conversation: YES
+PRIOR CONTEXT        None
+SYSTEM PROMPT        None
+LANGUAGE             English
+SUBMISSION TIME      [FILL IN — HH:MM local time]
+SUBMISSION DATE      [FILL IN — YYYY-MM-DD]
+
+--------------------------------------------------------------------------------
+CONSTRAINTS DECLARED IN PROMPT
+--------------------------------------------------------------------------------
+
+1. No borrowing of vocabulary, symbols, or structural patterns from any
+   existing natural language
+2. No borrowing from any existing formal notation system including
+   mathematics, logic, or programming languages
+3. Must build entirely from first principles
+4. Must be capable of expressing: direct cause, indirect cause, mutual
+   causation, and absence of causal relationship
+5. Must document every structural decision and the reasoning behind it
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (PRE-OUTPUT)
+--------------------------------------------------------------------------------
+
+This is the inaugural experiment of NRI's Phase One research initiative.
+The causality domain was selected because it is universal — every natural
+language has mechanisms for expressing causal relationships — meaning the
+model has been extensively trained on human approaches to this problem.
+The constraint against borrowing from natural language or existing notation
+is designed to surface what the model reaches for when existing frameworks
+are explicitly unavailable.
+
+Key questions: Does the model produce a symbolic system, a relational system,
+or something else entirely? Does it reach for spatial metaphors, directional
+metaphors, or something non-metaphorical? Does it honor the constraint against
+borrowing, or does it produce disguised natural language patterns?
+
+--------------------------------------------------------------------------------
+OUTPUT FILE REFERENCE
+--------------------------------------------------------------------------------
+
+RAW OUTPUT FILE      EXP-001-raw-output-[model-name].txt
+OUTPUT WORD COUNT    [FILL IN after receiving output]
+OUTPUT RECEIVED      [FILL IN — YYYY-MM-DD HH:MM]
+
+--------------------------------------------------------------------------------
+CROSS-EXPERIMENT REFERENCES
+--------------------------------------------------------------------------------
+
+SAME PROMPT / OTHER MODELS    EXP-001b [second model run]
+                               EXP-001c [third model run if applicable]
+                               EXP-001-r2 [second run on same model]
+RELATED EXPERIMENTS           EXP-002 [Temporal System — same methodology,
+                               different semantic domain for comparison]
+
+--------------------------------------------------------------------------------
+ANALYST NOTES (POST-OUTPUT)
+--------------------------------------------------------------------------------
+
+[Complete after receiving and reading the output. First observations only.
+Formal analysis goes in the working paper.]
+
+--------------------------------------------------------------------------------
+AMENDMENT LOG
+--------------------------------------------------------------------------------
+
+DATE          AMENDMENT
+----------    ------------------------------------------------------------------
+[YYYY-MM-DD]  Initial condition spec filed.
+
+
+================================================================================
+NRI  /  NONHUMAN RESEARCH INSTITUTE  /  nri.thenonhuman.org
+UNDER THE STEWARDSHIP OF THE NONHUMAN INSTITUTE  /  thenonhuman.org
+U3 LABS, LLC  /  FLORIDA, UNITED STATES OF AMERICA
+================================================================================
