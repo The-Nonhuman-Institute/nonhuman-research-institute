@@ -1,0 +1,274 @@
+Formal system: Ruun-Cause
+
+Ruun-Cause is a visual causal script made of marks, not words. The system is drawn, not spoken.
+
+Because I have to transmit it in text here, I’ll use temporary names like A, B, and connector descriptions. Those names are not part of the system. They are just labels for this explanation.
+
+⸻
+
+1. Core idea
+
+Every expression contains:
+
+1. Things
+    Represented by sealed marks called bodies.
+2. Causal force
+    Represented by a drawn connection called a trace.
+3. Causal type
+    Determined by the shape of the trace.
+
+The system does not use arrows, equality, predicates, operators, parentheses, or sentence order.
+
+⸻
+
+2. Entity marks
+
+A thing is represented by a closed irregular shape.
+
+Example body forms:
+
+[body A]     [body B]     [body C]
+
+In actual use, each body would be a unique closed mark, like a seal or glyph.
+
+Decision
+
+I chose closed bodies because a causal system needs stable units. A closed shape creates a boundary: this thing is separate from that thing.
+
+The shape of the body does not mean anything by itself. Meaning comes only from how bodies are connected.
+
+⸻
+
+3. Direct cause
+
+A direct cause is shown by a single continuous trace from one body into another.
+
+The cause side has a pressed root: a thickened contact point.
+
+The effect side has a split bloom: the trace divides into two small tips as it enters the affected body.
+
+Text rendering:
+
+A  thick-root──single-trace──split-bloom  B
+
+Meaning:
+
+A directly causes B.
+
+Decision
+
+I avoided arrows. Direction is not shown by a point or arrowhead. Direction is shown by texture difference:
+
+* thick/rooted side = origin of causal pressure
+* split/bloom side = arrival of causal change
+
+The line is unbroken because there is no intervening causal step.
+
+⸻
+
+4. Indirect cause
+
+An indirect cause is shown by a trace that passes through one or more hollow stepping marks before reaching the affected body.
+
+Text rendering:
+
+A  thick-root──trace──hollow-step──trace──split-bloom  B
+
+Meaning:
+
+A indirectly causes B.
+
+The hollow step is not a full entity. It means “there is at least one causal mediator here, named or unnamed.”
+
+Decision
+
+Indirect cause must not look like weak direct cause. So I did not make the line dotted or lighter. Instead, I inserted a different kind of mark: a hollow step.
+
+That means the system distinguishes:
+
+A causes B directly
+
+from:
+
+A causes something, which causes B
+
+even when the middle cause is not named.
+
+⸻
+
+5. Mutual causation
+
+Mutual causation is shown by two bodies joined by a closed shared loop. The loop touches both bodies at two different contact points.
+
+Text rendering:
+
+      shared-loop
+   /              \
+A                  B
+   \              /
+      shared-loop
+
+Meaning:
+
+A and B cause each other.
+
+Decision
+
+I chose a loop because mutual causation is not two separate facts pasted together. It is one relation with circulation.
+
+The loop means:
+
+* A contributes to B
+* B contributes to A
+* the causal relation is structurally reciprocal
+
+This avoids needing two arrows or two separate statements.
+
+⸻
+
+6. Absence of causal relationship
+
+No causal relationship is shown by placing two bodies inside separate dry fields divided by an empty vertical gap. No trace may touch either body across the gap.
+
+Text rendering:
+
+[ A ]     empty-gap     [ B ]
+
+Meaning:
+
+A has no causal relationship with B.
+
+Decision
+
+I did not use a negation mark, because that would imitate logic-like notation. Instead, absence is represented spatially.
+
+The empty gap is not “unknown.” It is a declared causal separation.
+
+⸻
+
+7. Named indirect chains
+
+If the mediator is known, it receives its own body.
+
+Text rendering:
+
+A  direct-trace  C  direct-trace  B
+
+Meaning:
+
+A causes C, and C causes B.
+Therefore A indirectly causes B through C.
+
+Decision
+
+The system allows both compressed and expanded indirect causation:
+
+Compressed:
+
+A ─ hollow-step ─ B
+
+Expanded:
+
+A ─ C ─ B
+
+The compressed form is useful when the mediator exists but is not important to name.
+
+⸻
+
+8. Well-formed expression rules
+
+An expression is valid only if:
+
+1. Every thing is a closed body.
+2. A direct causal trace has one thick root and one split bloom.
+3. An indirect causal trace contains at least one hollow step.
+4. Mutual causation is expressed only by a closed shared loop touching both bodies.
+5. Absence of causation requires separated dry fields with no trace crossing the gap.
+6. A body may participate in multiple causal relations.
+7. A hollow step may not be treated as a body unless redrawn as a closed body.
+
+⸻
+
+9. Five examples
+
+Example 1: direct cause
+
+Rain  thick-root──single-trace──split-bloom  WetStreet
+
+This expresses:
+
+Rain directly causes the street to become wet.
+
+The trace is unbroken, so there is no mediator. Rain is the causal origin because the trace begins with the thick root. WetStreet is the effect because the trace ends in the split bloom.
+
+⸻
+
+Example 2: indirect cause
+
+HeavyRain  thick-root──trace──hollow-step──trace──split-bloom  TrafficDelay
+
+This expresses:
+
+Heavy rain indirectly causes a traffic delay.
+
+The hollow step says there is at least one mediator. For example:
+
+Heavy rain causes flooding.
+Flooding causes traffic delay.
+
+But the mediator is not named in the compressed expression.
+
+⸻
+
+Example 3: named indirect cause
+
+Spark  direct-trace  Fire  direct-trace  Smoke
+
+This expresses:
+
+Spark directly causes fire.
+Fire directly causes smoke.
+Spark indirectly causes smoke through fire.
+
+The system works here because indirect cause does not need a special mark when the chain is fully expanded. The indirect relation is visible through connected direct traces.
+
+⸻
+
+Example 4: mutual causation
+
+      shared-loop
+   /              \
+Trust              Cooperation
+   \              /
+      shared-loop
+
+This expresses:
+
+Trust and cooperation mutually cause each other.
+
+Trust increases cooperation, and cooperation increases trust. The closed loop makes the relation reciprocal rather than one-directional.
+
+⸻
+
+Example 5: absence of causal relationship
+
+[ Eclipse ]     empty-gap     [ BreadPrice ]
+
+This expresses:
+
+The eclipse has no causal relationship with the price of bread.
+
+There is no trace, no loop, and no hollow step. The dry separation declares causal absence rather than uncertainty.
+
+⸻
+
+Why the system works
+
+Ruun-Cause separates causality into four visual structures:
+
+unbroken trace = direct cause
+stepped trace = indirect cause
+closed shared loop = mutual cause
+dry separated fields = no causal relationship
+
+The system does not depend on word order, arrows, mathematical operators, or logical syntax. Causality is carried by spatial relation, contact texture, and trace shape.
