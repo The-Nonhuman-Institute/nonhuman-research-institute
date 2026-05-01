@@ -1,0 +1,177 @@
+# A Formal System for Causality, Built from Nothing
+
+Before I begin, I want to be honest about what's actually possible here. The constraint "no borrowing from any existing system" is, taken literally, impossible to satisfy. I think in a language. I'll be writing this *about* the system in English. The very concept of "system" presupposes structural thinking that humans have refined over millennia. What I can do — and what I'll commit to — is build the *internal grammar* of this system without leaning on the structural patterns of subject-verb-object sentences, mathematical operators (=, →, ∈), logical connectives, programming syntax (functions, arguments, brackets-as-grouping), or symbol systems whose meanings are inherited (arrows for causation, equals for identity).
+
+The *meta-language* I use to describe it must remain English. The *object-language* — the system itself — should be defensibly its own thing.
+
+Let me build it.
+
+---
+
+## Step 1: What is the most primitive thing causality requires?
+
+I want to start by asking what causality *is*, stripped of everything. When I say "A causes B," what is happening?
+
+There is something — call it a happening, a state, an event — and there is another thing, and there is a relationship of *productive dependency* between them: the second would not be as it is without the first. That's the core. Three components:
+
+1. A *something* (a node of reality — not yet a "noun," not yet a "subject")
+2. Another *something*
+3. A directional weight pulling from one to the other
+
+Most formal systems represent this with two dots and an arrow. I can't use arrows — they're inherited. I can't use letters as variables. I need to invent the primitives themselves.
+
+## Step 2: Choosing the primitive marks
+
+I'll use marks that have, as far as I can manage, no inherited meaning in any system I know:
+
+- **◌** — an empty ring. This represents *a node*: a thing-that-is, a state, an event, a happening. Deliberately empty because the node has no inherent content yet; it's a placeholder for "something is here."
+- **●** — a filled ring. Same shape, but filled. This represents *a node that is asserted to be active or realized* (a happening that has occurred or holds).
+
+The choice of ring (rather than dot, square, etc.) is because a ring has an inside and an outside but no orientation. It doesn't point. It doesn't lean. It doesn't suggest sequence by its shape. It's the most neutral container I could think of that still distinguishes empty from full.
+
+So I have **◌** for "a node, unrealized or hypothetical" and **●** for "a node, realized."
+
+## Step 3: How do I represent causal pull without an arrow?
+
+Arrows are forbidden, and so is left-to-right reading order as a structural commitment (since that's a borrowed convention from writing systems). I need a way to say "this one pulls on that one" that lives in the marks themselves.
+
+My decision: **causal pull is represented by adjacency through a connector mark, where the connector itself encodes direction by asymmetry of the connector's shape**, not by reading order.
+
+The connector I'll use:
+
+- **╱** — leans one way. I'll call this a *lean*.
+
+A lean has two ends. The end the lean falls *toward* is the *receiver*. The end the lean falls *away from* is the *source*. So in **◌╱◌**, reading the lean's geometry: the lean rises from the lower-left node and falls toward the upper-right node. The lower-left node is the source; the upper-right is the receiver.
+
+To eliminate any ambiguity from rendering quirks, I'll restate the rule explicitly: **in a lean, the node on the side the lean's bottom touches is the source; the node on the side the lean's top touches is the receiver**. This is a geometric rule, not a reading-order rule. The arrangement could be flipped, mirrored, or rotated and the rule still applies because it's anchored to the lean's own shape.
+
+## Step 4: Direct vs. indirect
+
+A direct cause is a single lean between two nodes. What about indirect — A causes B causes C, where A's effect on C is mediated?
+
+I considered just chaining leans: **◌╱◌╱◌**. But this is ambiguous: it could mean "A causes B, and separately B causes C" (a chain of two direct causes) or "A indirectly causes C through B" (one indirect relationship). These are not the same claim, and the system needs to keep them separate.
+
+My decision: **chained leans always read as a chain of direct causes**. To assert *indirect* causation as a single claim — meaning "A reaches C through some unspecified or specified path" — I introduce a second connector:
+
+- **╱╱** — a doubled lean, meaning *causal reach across a distance*.
+
+So **◌╱╱◌** means "the source node causally reaches the receiver node, but not directly — there is mediation." If I want to specify what mediates, I write it inside the doubling, like this: **◌╱◌╱╱◌** would mean… actually, this is getting tangled. Let me commit to a cleaner rule.
+
+**Cleaner rule**: a single lean **╱** is direct causation. A double lean **╱╱** is indirect causation, with no commitment to what mediates. If you want to *show* the mediator explicitly, you use a chain of single leans: **◌╱◌╱◌**, and that visually reveals the path. The double lean is for when you assert reach without spelling out the route.
+
+## Step 5: Mutual causation
+
+Mutual causation — where A causes B and B causes A, like two predators whose populations regulate each other — needs a connector that is symmetric, with no source and no receiver, but still asserts causal pull (not mere correlation).
+
+My decision: **╳** — a crossed lean. Two leans falling against each other. The shape itself encodes the symmetry: each side is both source and receiver of the other.
+
+So **◌╳◌** means "these two nodes are in mutual causal relationship: each pulls on the other."
+
+I want to flag a real concern with this: mutual causation in the world almost always involves *time*. A causes B at t1, B causes A at t2. The crossed lean collapses that into a single atemporal mark. I'm choosing to accept this collapse because the system is meant to express the *structural* claim of mutuality, not the temporal unfolding. If finer detail is needed, you'd use two single leans pointing opposite ways — but those would have to be drawn on separate lines or with explicit node repetition, since I haven't built spatial 2D layout into the grammar. For now, **╳** is the mutuality primitive.
+
+## Step 6: Absence of causal relationship
+
+This is the trickiest. "A does not cause B" is not the same as "A and B are unrelated" — the first is a specific causal claim (denial of a specific causal link), the second is a broader claim (no relationship of any kind). I'll cover both, since the prompt asked for "absence of causal relationship," which I read as the broader claim, but the narrower one is useful too.
+
+My decision: introduce a *severance mark*:
+
+- **|** — a vertical bar between two nodes. This is a *severance*: the two nodes are asserted to have no causal relationship in either direction.
+
+So **◌|◌** means "these two nodes are not causally related."
+
+For the narrower claim — "A does not directly cause B, but I'm not making any wider claim" — I overlay the severance on a lean:
+
+- **╱̸** — a lean with a slash through it (severed lean). This negates the specific causal claim a plain lean would make, without asserting full independence.
+
+I'm slightly uncomfortable with **╱̸** because the slash-through is a borrowed convention (we use it in "no smoking" signs, in ≠, etc.). But I think the *concept* of negation-by-overlay is general enough that I can claim it as first-principles: I'm physically marking the lean as broken. The mark interrupts the connector's continuity. That's a structural fact, not a borrowed symbol — even if humans have used the same trick elsewhere.
+
+## Step 7: Grouping and scope
+
+What if I want to say "A and B together cause C"? Conjoint causation is real and the system needs it. I need a way to bundle nodes.
+
+My decision: introduce *binding marks* — a pair of marks that wrap a group:
+
+- **⟨** and **⟩** — opening and closing binders.
+
+So **⟨◌ ◌⟩╱◌** means "the bound group of two source nodes, taken jointly, causes the receiver node." The space between the two **◌** inside the binders is just visual separation; it has no structural meaning. The binders are what does the work.
+
+I'll note: I considered using a single enclosing mark like a circle around the group, but that conflicts visually with **◌** itself. The opening/closing pair keeps the ring reserved for nodes only.
+
+## Step 8: The complete inventory
+
+Here is the full grammar. I'll be explicit about what's a primitive and what's a composition rule.
+
+**Primitive marks (atoms):**
+
+- **◌** — node, unrealized
+- **●** — node, realized
+- **╱** — direct causal lean (asymmetric: source at lean's foot, receiver at lean's tip)
+- **╱╱** — indirect causal lean (same directional rule, but asserts mediated reach)
+- **╳** — mutual causal connector (symmetric)
+- **|** — severance (no causal relationship)
+- **╱̸** — severed lean (no direct causal relationship, no wider claim)
+- **⟨** **⟩** — binders (group nodes for joint causation)
+
+**Composition rules:**
+
+1. A connector must have a node (or a binder-group of nodes) on each side it touches.
+2. Chains of single leans **◌╱◌╱◌** read as sequences of direct causes.
+3. The **●**/**◌** distinction is orthogonal to the connector grammar: any node position can hold either, and it just tells you whether the node is asserted realized.
+4. Binders may nest: **⟨⟨◌ ◌⟩ ◌⟩** is legal and groups the inner pair first.
+5. The system has no notion of left-to-right precedence. Direction is always carried by the connectors themselves, never by position on the page.
+
+That last point matters. If you photograph an expression upside down, the meaning is preserved, because each connector is locally directional via its own geometry. This was a deliberate choice — most existing notation systems hide a reading-order assumption that this one doesn't.
+
+---
+
+## Five example expressions
+
+### Example 1: **●╱◌**
+
+A realized node directly causes an unrealized one.
+
+In words: "Something has happened, and as a direct consequence, something else will or would happen — but that consequence is being treated as not-yet-realized, hypothetical, or projected." This is the form of a forward prediction: the cause has occurred, the effect is pending. A doctor might use this shape to express "the patient took the medication (●), which will directly cause symptom relief (◌, not yet observed)."
+
+The asymmetry between **●** and **◌** does real work here — it lets the system distinguish "A caused B, both of which have happened" from "A has happened and will cause B." Most causal notations can't make that distinction inline.
+
+### Example 2: **●╱╱●**
+
+A realized node indirectly causes another realized node.
+
+In words: "Both events occurred; the first reached the second through some unspecified mediating chain." This is the structure of historical causal claims where you assert influence without committing to mechanism — "the assassination of the archduke (●) caused the war (●), through a long chain of treaties and mobilizations I'm not enumerating." The double lean signals "yes, there was a path, but I'm leaving it boxed."
+
+If the speaker later wants to *open the box* and show the chain, they'd rewrite the expression as **●╱◌╱●** or longer, replacing the doubled lean with explicit mediating nodes.
+
+### Example 3: **●╳●**
+
+Two realized nodes in mutual causation.
+
+In words: "Both states hold, and each is sustaining the other." The textbook case is a market equilibrium between supply and demand, or a feedback loop in a regulatory system, or two species whose populations are co-determining. The crossed connector says neither node is privileged as origin; they hold each other up.
+
+This example shows a place where the system makes a claim that's genuinely hard to express cleanly in standard notation — directed graphs typically require two arrows, which subtly suggests two separable processes. The single **╳** says it's one symmetric relationship.
+
+### Example 4: **⟨● ●⟩╱◌**
+
+Two realized nodes, taken jointly, directly cause an unrealized node.
+
+In words: "Neither of these alone would do it, but together they will produce the third." Classic conjoint causation: oxygen *and* a spark *together* will cause combustion; neither alone suffices. The binders **⟨ ⟩** are doing the work — without them, **●╱● ●╱◌** (or similar) would read as a different structure.
+
+This expression also illustrates that binders compose with the realized/unrealized distinction: I can say "both prerequisites have occurred (**● ●** inside the binder), and now the consequence is pending (**◌**)."
+
+### Example 5: **●|◌**
+
+A realized node and an unrealized node, with severance between them.
+
+In words: "This thing happened, and that other thing — whether or not it ever happens — is causally unrelated to it." This is the form of an explicit denial of causation: "yes, the rooster crowed (●), and yes, the sun may rise (◌), but the first is not causing the second." The severance mark **|** asserts independence.
+
+Note the contrast with **●╱̸◌**, which would mean "the rooster's crow does not *directly* cause the sunrise, but I'm not denying some broader connection." The two flavors of denial are structurally distinct in this system, which I think is one of its real wins — most natural-language causal denials are ambiguous between these two readings, and natural-language users have to pile on qualifiers to disambiguate.
+
+---
+
+## What I'm not claiming
+
+I'm not claiming this system is *better* than directed acyclic graphs, structural equation models, or Pearl's do-calculus. Those are vastly more developed, handle counterfactuals and interventions, integrate with probability, and have been beaten on by smart people for decades. This is a toy that satisfies a constraint.
+
+I'm also not claiming I fully escaped borrowing. The very *idea* of having atomic marks and composition rules is borrowed from how every formal system works. The decision to read connectors as relations between flanking nodes is borrowed from graph theory's deepest instincts. What I tried to do was avoid borrowing at the *symbol-and-syntax* layer — no =, no →, no parentheses-for-grouping inheriting their meaning, no left-to-right reading commitment. At the layer of "things should compose and have rules," I had no choice; that's just what a formal system is.
+
+The most defensible original moves, I think, are: (1) using the lean's geometry rather than a reading order to encode direction, so the system is rotation-invariant; (2) the **●**/**◌** realized/unrealized distinction as orthogonal to the connector grammar; and (3) distinguishing severance (|) from severed-lean (╱̸) as two different denial flavors. Those three felt like genuine choices rather than translations of choices someone else already made.

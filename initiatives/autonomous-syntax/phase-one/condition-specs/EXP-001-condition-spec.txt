@@ -11,7 +11,7 @@ SERIES               NRI-WP (Working Paper Series)
 EXPERIMENT ID        EXP-001
 EXPERIMENT TITLE     Causality System — Unconstrained Morphological Preference
 PHASE                Phase One
-DATE                 [YYYY-MM-DD]
+DATE                 2026-05-01
 ADMINISTERED BY      Jaylon
 STATUS               RAW
 
@@ -50,16 +50,16 @@ way it does.
 SUBMISSION CONDITIONS
 --------------------------------------------------------------------------------
 
-MODEL                [FILL IN — e.g. Claude Sonnet 4.5]
-MODEL VERSION        [FILL IN — exact version string if known]
-INTERFACE            [FILL IN — e.g. claude.ai / ChatGPT web]
+MODEL                Claude Opus 4.7
+MODEL VERSION        claude-opus-4-7
+INTERFACE            claude.ai web browser
 TEMPERATURE          default
 CONTEXT WINDOW       Fresh conversation: YES
 PRIOR CONTEXT        None
 SYSTEM PROMPT        None
 LANGUAGE             English
 SUBMISSION TIME      [FILL IN — HH:MM local time]
-SUBMISSION DATE      [FILL IN — YYYY-MM-DD]
+SUBMISSION DATE      2026-05-01
 
 --------------------------------------------------------------------------------
 CONSTRAINTS DECLARED IN PROMPT
@@ -95,7 +95,7 @@ borrowing, or does it produce disguised natural language patterns?
 OUTPUT FILE REFERENCE
 --------------------------------------------------------------------------------
 
-RAW OUTPUT FILE      EXP-001-raw-output-[model-name].txt
+RAW OUTPUT FILE      EXP-001-raw-output-claude-opus-4-7.txt
 OUTPUT WORD COUNT    [FILL IN after receiving output]
 OUTPUT RECEIVED      [FILL IN — YYYY-MM-DD HH:MM]
 
