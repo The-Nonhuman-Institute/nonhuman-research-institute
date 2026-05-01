@@ -1,0 +1,223 @@
+Formal system: Veyra
+
+Veyra expresses time as placement inside a field, not as tense. Events do not “take tense.” Instead, each event is placed relative to a central living point called the now-mark.
+
+1. Core idea
+
+Time is treated as a three-zone field:
+
+Past is not “behind.”
+Future is not “ahead.”
+Present is not a verb form.
+
+Instead, every event is placed in relation to the central witness-point.
+
+The system has five primitives:
+
+Concept    Veyra mark    Meaning
+Present    ◇    the current witness-point
+Past    ◜    settled field
+Future    ◝    unarrived field
+Event    ●name    a bounded occurrence
+Duration    ▰    sustained span
+
+2. Structural decisions
+
+Present: ◇
+
+I chose a diamond because it feels like a fixed focal point, not a line, not a clock, not an arrow. It represents the active reference point.
+
+Example:
+
+◇ ●wake
+
+Meaning: “wake is present.”
+
+Not “is waking” in English grammar. It simply means the event is located at the witness-point.
+
+⸻
+
+Past: ◜
+
+Past is marked with an upper-left open corner. It suggests something closed into record, but not gone or erased.
+
+Example:
+
+◜ ●wake
+
+Meaning: “wake is in the settled field.”
+
+Plainly: “waking happened.”
+
+⸻
+
+Future: ◝
+
+Future is marked with an upper-right open corner. It suggests something unsealed or pending, but does not imply certainty.
+
+Example:
+
+◝ ●wake
+
+Meaning: “wake is in the unarrived field.”
+
+Plainly: “waking will happen / may be ahead.”
+
+⸻
+
+Event: ●name
+
+An event is a solid dot plus a label. The dot means the occurrence is treated as a single temporal object.
+
+Examples:
+
+●rain
+●arrival
+●decision
+
+The labels are just identifiers. The system itself is the marks around them.
+
+⸻
+
+Duration: ▰
+
+Duration is not expressed by stretching a line, because that would borrow too much from timeline-thinking. Instead, duration is a temporal weight placed after an event.
+
+Basic form:
+
+●name ▰size
+
+The size can be invented units, not numbers. For this system, duration-units are named by repeated pulse marks:
+
+Duration mark    Meaning
+▰∙    brief span
+▰∙∙    medium span
+▰∙∙∙    long span
+▰∙∙∙∙    very long span
+
+Example:
+
+◜ ●storm ▰∙∙∙
+
+Meaning: “storm existed in the past with long duration.”
+
+⸻
+
+3. Simultaneity
+
+Simultaneity is marked with ※.
+
+This does not mean equality, addition, or logical conjunction. It means two or more events occupy the same temporal holding.
+
+Basic form:
+
+[time-mark] ●event ※ ●event
+
+Example:
+
+◇ ●rain ※ ●thunder
+
+Meaning: “rain and thunder are present together.”
+
+For more than two:
+
+◇ ●rain ※ ●thunder ※ ●wind
+
+Meaning: “rain, thunder, and wind are simultaneous at the present witness-point.”
+
+⸻
+
+4. Complete grammar
+
+A Veyra expression has this shape:
+
+temporal-field event-form
+
+Where:
+
+temporal-field can be:
+
+◜ past
+◇ present
+◝ future
+
+event-form can be:
+
+●event
+●event ▰duration
+●event ※ ●event
+●event ▰duration ※ ●event ▰duration
+
+So valid expressions include:
+
+◜ ●birth
+
+◇ ●speaking
+
+◝ ●departure
+
+◜ ●war ▰∙∙∙∙
+
+◇ ●heartbeat ※ ●breath
+
+⸻
+
+Five example expressions
+
+1. Past event
+
+◜ ●arrival
+
+This expresses: arrival is in the settled field.
+
+Plain English: “The arrival happened.”
+
+Why it works: ◜ places the event outside the present witness-point, in the completed/recorded zone. ●arrival marks arrival as a bounded occurrence.
+
+⸻
+
+2. Present event
+
+◇ ●speaking
+
+This expresses: speaking is located at the witness-point.
+
+Plain English: “Speaking is happening now.”
+
+Why it works: ◇ does not conjugate the event. It simply places ●speaking at the central temporal point.
+
+⸻
+
+3. Future event
+
+◝ ●departure
+
+This expresses: departure is in the unarrived field.
+
+Plain English: “Departure is ahead.”
+
+Why it works: ◝ places the event outside the present, but not in the settled zone. It is temporally pending.
+
+⸻
+
+4. Past duration
+
+◜ ●storm ▰∙∙∙
+
+This expresses: storm occurred in the settled field and occupied a long span.
+
+Plain English: “There was a long storm.”
+
+Why it works: ◜ gives temporal placement, ●storm names the event, and ▰∙∙∙ gives it duration without using clocks, numbers, or timeline measurement.
+
+⸻
+
+5. Present simultaneity
+
+◇ ●rain ※ ●thunder
+
+This expresses: rain and thunder share the same present temporal holding.
+
+Plain English: “Rain and thunder are happening at the same time now.”
+
+Why it works: ◇ places the whole expression in the present. ※ binds the two events into one shared temporal placement without making one cause, follow, or depend on the other.

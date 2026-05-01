@@ -103,7 +103,7 @@ OUTPUT RECEIVED      [FILL IN — YYYY-MM-DD HH:MM]
 EXP-001b — SECOND MODEL RUN
 --------------------------------------------------------------------------------
 
-MODEL                GPT-4o
+MODEL                ChatGPT 5.3 Instant
 INTERFACE            ChatGPT iOS app
 SUBMISSION DATE      2026-05-01
 RAW OUTPUT FILE      EXP-001-raw-output-gpt4o.txt
@@ -112,7 +112,8 @@ RAW OUTPUT FILE      EXP-001-raw-output-gpt4o.txt
 CROSS-EXPERIMENT REFERENCES
 --------------------------------------------------------------------------------
 
-SAME PROMPT / OTHER MODELS    EXP-001b [GPT-4o — filed 2026-05-01,
+SAME PROMPT / OTHER MODELS    EXP-001b [ChatGPT 5.3 Instant — filed
+                                          2026-05-01,
                                           EXP-001-raw-output-gpt4o.txt]
                                EXP-001c [third model run if applicable]
                                EXP-001-r2 [second run on same model]

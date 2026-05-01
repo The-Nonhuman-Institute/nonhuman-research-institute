@@ -97,10 +97,21 @@ OUTPUT WORD COUNT    [FILL IN]
 OUTPUT RECEIVED      [FILL IN]
 
 --------------------------------------------------------------------------------
+EXP-002b — SECOND MODEL RUN
+--------------------------------------------------------------------------------
+
+MODEL                ChatGPT 5.3 Instant
+INTERFACE            ChatGPT iOS app
+SUBMISSION DATE      2026-05-01
+RAW OUTPUT FILE      EXP-002-raw-output-chatgpt-5-3-instant.txt
+
+--------------------------------------------------------------------------------
 CROSS-EXPERIMENT REFERENCES
 --------------------------------------------------------------------------------
 
-SAME PROMPT / OTHER MODELS    EXP-002b [second model]
+SAME PROMPT / OTHER MODELS    EXP-002b [ChatGPT 5.3 Instant — filed
+                                          2026-05-01,
+                                          EXP-002-raw-output-chatgpt-5-3-instant.txt]
                                EXP-002c [third model if applicable]
                                EXP-002-r2 [second run same model]
 RELATED EXPERIMENTS           EXP-001 [Causality System — primary comparison]
